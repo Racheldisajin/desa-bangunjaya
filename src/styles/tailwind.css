@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #2D5A27; /* green-800 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #8B4513; /* saddle-brown */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #D2691E; /* chocolate */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Background Colors */
+    --color-background: #FEFEFE; /* off-white */
+    --color-foreground: #1A1A1A; /* gray-900 */
+    
+    /* Surface Colors */
+    --color-card: #F8F6F3; /* warm-gray-50 */
+    --color-card-foreground: #1A1A1A; /* gray-900 */
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1A1A1A; /* gray-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F8F6F3; /* warm-gray-50 */
+    --color-muted-foreground: #4A4A4A; /* gray-600 */
+    
+    /* Border & Input */
+    --color-border: rgba(139, 69, 19, 0.2); /* saddle-brown-20 */
+    --color-input: rgba(139, 69, 19, 0.2); /* saddle-brown-20 */
+    --color-ring: #2D5A27; /* green-800 */
+    
+    /* Semantic Colors */
+    --color-success: #228B22; /* forest-green */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    --color-warning: #FF8C00; /* dark-orange */
+    --color-warning-foreground: #1A1A1A; /* gray-900 */
+    
+    --color-error: #B22222; /* firebrick */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    --color-destructive: #B22222; /* firebrick */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Additional Brand Colors */
+    --color-heritage: #8B4513; /* saddle-brown */
+    --color-civic: #2C5282; /* blue-700 */
+    --color-conversion: #10B981; /* emerald-500 */
+    --color-trust: #F7FAFC; /* gray-50 */
+    --color-cta: #E53E3E; /* red-500 */
+    
+    /* Spacing & Layout */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+  }
+  
+  button {
+    font-family: 'Nunito Sans', sans-serif;
+  }
+}
