@@ -29,18 +29,20 @@ export default function FeedbackForm() {
   }, []);
 
   const categories = [
-    'General Inquiry',
-    'Service Request',
-    'Complaint',
-    'Suggestion',
-    'Document Request',
-    'Meeting Attendance',
-    'Other'
+    'Pertanyaan Umum',
+    'Permohonan Layanan',
+    'Pengaduan',
+    'Saran',
+    'Permintaan Dokumen',
+    'Kehadiran Rapat',
+    'Lainnya'
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     if (!isHydrated) return;
-    
+
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -51,7 +53,7 @@ export default function FeedbackForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isHydrated) return;
-    
+
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -69,7 +71,9 @@ export default function FeedbackForm() {
   if (!isHydrated) {
     return (
       <div className="bg-card rounded-lg p-8 shadow-subtle">
-        <h2 className="font-headline font-semibold text-2xl text-primary mb-6">Send Us Your Feedback</h2>
+        <h2 className="font-headline font-semibold text-2xl text-primary mb-6">
+          Kirim Masukan Anda
+        </h2>
         <div className="space-y-4">
           <div className="h-12 bg-muted rounded animate-pulse"></div>
           <div className="h-12 bg-muted rounded animate-pulse"></div>
@@ -82,20 +86,26 @@ export default function FeedbackForm() {
 
   return (
     <div className="bg-card rounded-lg p-8 shadow-subtle">
-      <h2 className="font-headline font-semibold text-2xl text-primary mb-6">Send Us Your Feedback</h2>
-      
+      <h2 className="font-headline font-semibold text-2xl text-primary mb-6">
+        Kirim Masukan Anda
+      </h2>
+
       {isSubmitted ? (
         <div className="bg-success/10 border border-success rounded-lg p-6 text-center">
           <Icon name="CheckCircleIcon" size={48} className="text-success mx-auto mb-4" />
-          <h3 className="font-headline font-semibold text-xl text-success mb-2">Thank You!</h3>
-          <p className="font-body text-foreground">Your feedback has been submitted successfully. We will respond within 2-3 business days.</p>
+          <h3 className="font-headline font-semibold text-xl text-success mb-2">
+            Terima Kasih!
+          </h3>
+          <p className="font-body text-foreground">
+            Masukan Anda berhasil dikirim. Kami akan menindaklanjuti dalam waktu 2–3 hari kerja.
+          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block font-body font-medium text-foreground mb-2">
-                Full Name <span className="text-cta">*</span>
+                Nama Lengkap <span className="text-cta">*</span>
               </label>
               <input
                 type="text"
@@ -105,13 +115,13 @@ export default function FeedbackForm() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                placeholder="John Doe"
+                placeholder="Nama lengkap Anda"
               />
             </div>
 
             <div>
               <label htmlFor="email" className="block font-body font-medium text-foreground mb-2">
-                Email Address <span className="text-cta">*</span>
+                Alamat Email <span className="text-cta">*</span>
               </label>
               <input
                 type="email"
@@ -121,7 +131,7 @@ export default function FeedbackForm() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                placeholder="john@example.com"
+                placeholder="nama@email.com"
               />
             </div>
           </div>
@@ -129,7 +139,7 @@ export default function FeedbackForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="phone" className="block font-body font-medium text-foreground mb-2">
-                Phone Number
+                Nomor Telepon
               </label>
               <input
                 type="tel"
@@ -138,13 +148,13 @@ export default function FeedbackForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                placeholder="(555) 123-4567"
+                placeholder="08xxxxxxxxxx"
               />
             </div>
 
             <div>
               <label htmlFor="category" className="block font-body font-medium text-foreground mb-2">
-                Category <span className="text-cta">*</span>
+                Kategori <span className="text-cta">*</span>
               </label>
               <select
                 id="category"
@@ -154,7 +164,7 @@ export default function FeedbackForm() {
                 required
                 className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
               >
-                <option value="">Select a category</option>
+                <option value="">Pilih kategori</option>
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
@@ -164,7 +174,7 @@ export default function FeedbackForm() {
 
           <div>
             <label htmlFor="subject" className="block font-body font-medium text-foreground mb-2">
-              Subject <span className="text-cta">*</span>
+              Perihal <span className="text-cta">*</span>
             </label>
             <input
               type="text"
@@ -174,13 +184,13 @@ export default function FeedbackForm() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-              placeholder="Brief description of your inquiry"
+              placeholder="Judul singkat pesan Anda"
             />
           </div>
 
           <div>
             <label htmlFor="message" className="block font-body font-medium text-foreground mb-2">
-              Message <span className="text-cta">*</span>
+              Pesan <span className="text-cta">*</span>
             </label>
             <textarea
               id="message"
@@ -190,8 +200,8 @@ export default function FeedbackForm() {
               required
               rows={6}
               className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
-              placeholder="Please provide detailed information about your inquiry..."
-            ></textarea>
+              placeholder="Silakan tuliskan pesan, saran, atau pengaduan Anda secara lengkap..."
+            />
           </div>
 
           <button
@@ -199,7 +209,7 @@ export default function FeedbackForm() {
             className="w-full md:w-auto px-8 py-3 bg-primary text-primary-foreground rounded-md font-cta font-semibold hover:bg-secondary transition-colors duration-300 flex items-center justify-center space-x-2"
           >
             <Icon name="PaperAirplaneIcon" size={20} />
-            <span>Submit Feedback</span>
+            <span>Kirim Masukan</span>
           </button>
         </form>
       )}

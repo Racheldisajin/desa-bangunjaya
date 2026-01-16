@@ -1,4 +1,5 @@
 'use client';
+
 import Icon from '@/components/ui/AppIcon';
 
 interface InfrastructureItemProps {
@@ -16,9 +17,9 @@ const InfrastructureItem = ({ icon, title, description, status }: Infrastructure
   };
 
   const statusLabels = {
-    excellent: 'Excellent',
-    good: 'Good',
-    developing: 'Developing'
+    excellent: 'Sangat Baik',
+    good: 'Baik',
+    developing: 'Dalam Pengembangan'
   };
 
   return (
@@ -31,8 +32,12 @@ const InfrastructureItem = ({ icon, title, description, status }: Infrastructure
           {statusLabels[status]}
         </span>
       </div>
-      <h4 className="text-lg font-headline font-semibold text-foreground mb-2">{title}</h4>
-      <p className="text-sm text-muted-foreground font-body">{description}</p>
+      <h4 className="text-lg font-headline font-semibold text-foreground mb-2">
+        {title}
+      </h4>
+      <p className="text-sm text-muted-foreground font-body">
+        {description}
+      </p>
     </div>
   );
 };
@@ -45,38 +50,44 @@ const InfrastructureOverview = ({ className = '' }: InfrastructureOverviewProps)
   const infrastructureData = [
     {
       icon: 'BoltIcon',
-      title: 'Electricity',
-      description: '24/7 power supply with 98% uptime. Solar panels installed in 45% of households.',
+      title: 'Listrik',
+      description:
+        'Pasokan listrik tersedia 24 jam dengan tingkat keandalan 98%. Panel surya telah terpasang di sekitar 45% rumah warga.',
       status: 'excellent' as const
     },
     {
       icon: 'WifiIcon',
-      title: 'Internet & Connectivity',
-      description: 'High-speed broadband available. 4G coverage across 95% of the village area.',
+      title: 'Internet dan Konektivitas',
+      description:
+        'Akses internet berkecepatan tinggi tersedia. Jaringan 4G menjangkau sekitar 95% wilayah desa.',
       status: 'good' as const
     },
     {
       icon: 'TruckIcon',
-      title: 'Transportation',
-      description: 'Well-maintained roads connecting to major highways. Regular bus services available.',
+      title: 'Transportasi',
+      description:
+        'Kondisi jalan terpelihara dengan baik dan terhubung ke jalur utama. Tersedia layanan angkutan umum secara berkala.',
       status: 'good' as const
     },
     {
       icon: 'BuildingLibraryIcon',
-      title: 'Education',
-      description: '3 primary schools, 2 secondary schools, and 1 higher secondary school.',
+      title: 'Pendidikan',
+      description:
+        'Tersedia 3 sekolah dasar, 2 sekolah menengah pertama, dan 1 sekolah menengah atas.',
       status: 'excellent' as const
     },
     {
       icon: 'HeartIcon',
-      title: 'Healthcare',
-      description: 'Primary health center with 24/7 emergency services. 2 private clinics available.',
+      title: 'Kesehatan',
+      description:
+        'Puskesmas dengan layanan gawat darurat 24 jam serta didukung oleh 2 klinik swasta.',
       status: 'good' as const
     },
     {
       icon: 'HomeModernIcon',
-      title: 'Housing',
-      description: 'Mix of traditional and modern housing. Government housing schemes active.',
+      title: 'Perumahan',
+      description:
+        'Terdapat perpaduan rumah tradisional dan modern. Program perumahan pemerintah masih terus berjalan.',
       status: 'developing' as const
     }
   ];
@@ -84,9 +95,11 @@ const InfrastructureOverview = ({ className = '' }: InfrastructureOverviewProps)
   return (
     <div className={`bg-card rounded-lg p-6 shadow-subtle border border-border ${className}`}>
       <div className="mb-6">
-        <h3 className="text-2xl font-headline font-semibold text-foreground">Infrastructure Overview</h3>
+        <h3 className="text-2xl font-headline font-semibold text-foreground">
+          Gambaran Infrastruktur Desa
+        </h3>
         <p className="text-muted-foreground font-body mt-2">
-          Modern amenities and essential services available in our village
+          Fasilitas umum dan layanan dasar yang tersedia di Desa Bangunjaya
         </p>
       </div>
 

@@ -11,10 +11,16 @@ const StatCard = ({ icon, label, value, trend }: StatCardProps) => {
     <div className="bg-card rounded-lg p-6 shadow-subtle border border-border hover:shadow-md transition-shadow duration-300">
       <div className="flex items-start justify-between">
         <div className="flex-1">
-          <p className="text-sm font-body text-muted-foreground mb-1">{label}</p>
-          <p className="text-3xl font-headline font-semibold text-foreground">{value}</p>
+          <p className="text-sm font-body text-muted-foreground mb-1">
+            {label}
+          </p>
+          <p className="text-3xl font-headline font-semibold text-foreground">
+            {value}
+          </p>
           {trend && (
-            <p className="text-xs font-body text-success mt-2">{trend}</p>
+            <p className="text-xs font-body text-success mt-2">
+              {trend}
+            </p>
           )}
         </div>
         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -33,27 +39,26 @@ const VillageStats = ({ className = '' }: VillageStatsProps) => {
   const stats = [
     {
       icon: '👥',
-      label: 'Total Population',
-      value: '12,847',
-      trend: '+2.3% from last year'
+      label: 'Jumlah Penduduk',
+      value: '4.992',
+      trend: 'Naik 6,51% dari tahun sebelumnya'
     },
     {
       icon: '🏘️',
-      label: 'Total Households',
-      value: '3,421',
-      trend: '+1.8% from last year'
+      label: 'Jumlah Kepala Keluarga',
+      value: '1.718',
+      trend: 'Naik 1,8% dari tahun sebelumnya'
     },
     {
       icon: '📏',
-      label: 'Total Area',
-      value: '45.2 km²',
-      trend: ''
+      label: 'Luas Wilayah',
+      value: '12,72 km²'
     },
     {
       icon: '🌾',
-      label: 'Agricultural Land',
-      value: '32.8 km²',
-      trend: '72.6% of total area'
+      label: 'Luas Lahan Pertanian',
+      value: '32,8 km²',
+      trend: '72,6% dari total wilayah'
     }
   ];
 

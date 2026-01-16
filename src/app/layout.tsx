@@ -7,14 +7,15 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'Next.js with Tailwind CSS',
-  description: 'A boilerplate project with Next.js and Tailwind CSS',
+  title: {
+    default: 'Desa Bangunjaya',
+  },
+  description: 'Website Resmi Desa Bangunjaya',
   icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' }
-    ],
+    icon: 'http://localhost:4028/assets/pnd.png',
   },
 };
+
 
 export default function RootLayout({
   children,

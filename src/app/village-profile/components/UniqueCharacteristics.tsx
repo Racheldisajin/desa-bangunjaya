@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 

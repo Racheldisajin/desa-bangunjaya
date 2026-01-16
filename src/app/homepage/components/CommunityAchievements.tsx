@@ -1,111 +1,199 @@
+'use client';
+
+import { useState } from 'react';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 
-interface Achievement {
+interface UMKM {
   id: number;
-  title: string;
+  name: string;
+  owner: string;
   description: string;
   image: string;
-  alt: string;
-  date: string;
   category: string;
+  price: string;
+  rating: number;
+  reviews: number;
+  whatsapp: string;
 }
 
-const achievements: Achievement[] = [
-{
-  id: 1,
-  title: "Best Rural Development Award 2025",
-  description: "Recognized for outstanding infrastructure development and community welfare programs",
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_19d6a54c5-1764680144812.png",
-  alt: "Golden trophy award on wooden podium with certificate and ribbon",
-  date: "November 2025",
-  category: "Recognition"
-},
-{
-  id: 2,
-  title: "100% Digital Literacy Achievement",
-  description: "Successfully trained all residents in basic digital skills and online services",
-  image: "https://images.unsplash.com/photo-1565688103955-d38e06888776",
-  alt: "Group of diverse people using laptops and tablets in modern training room",
-  date: "October 2025",
-  category: "Education"
-},
-{
-  id: 3,
-  title: "Green Village Certification",
-  description: "Achieved carbon-neutral status through renewable energy and conservation efforts",
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_16488d357-1764876891892.png",
-  alt: "Solar panels installed on village rooftops with green trees and blue sky",
-  date: "September 2025",
-  category: "Environment"
-}];
+const umkmList: UMKM[] = [
+  {
+    id: 1,
+    name: 'Salegor',
+    owner: 'Siti Rukoyah',
+    description: 'Sale pisang manis legit khas desa.',
+    image: 'http://localhost:4028/assets/images/sale.jpeg',
+    category: 'Makanan & Minuman',
+    price: 'Rp 4.000',
+    rating: 4.6,
+    reviews: 64,
+    whatsapp: '6285724412461',
+  },
+  {
+    id: 2,
+    name: 'Telur Asin',
+    owner: 'Indrayani Tirtasari',
+    description: 'Produk telur asin dan bebek segar dari peternakan lokal.',
+    image: 'http://localhost:4028/assets/images/telurasin.jpeg',
+    category: 'Makanan & Minuman',
+    price: 'Rp 3.500 - Rp 4.000 per butir',
+    rating: 4.6,
+    reviews: 64,
+    whatsapp: '6285559696113',
+  },
+  {
+    id: 3,
+    name: 'Donat',
+    owner: 'Neng kusmayati',
+    description: 'Donat lembut dan enak.',
+    image: 'http://localhost:4028/assets/donat.jpeg',
+    category: 'Makanan & Minuman',
+    price: 'Rp 5.000 - Rp 40.000',
+    rating: 4.6,
+    reviews: 64,
+    whatsapp: '6285607334921',
+  },
+  {
+    id: 4,
+    name: 'Keripik Kebaya',
+    owner: 'Yayat Kusyati',
+    description: 'Keripik singkong renyah khas desa.',
+    image: 'http://localhost:4028/assets/keripik.jpeg',
+    category: 'Makanan & Minuman',
+    price: 'Rp 5.000 - Rp 40.000',
+    rating: 4.6,
+    reviews: 64,
+    whatsapp: '6285797957815',
+  },
+  {
+    id: 5,
+    name: 'GUSELA',
+    owner: 'Abdul Rojak',
+    description: 'Gula Semut Alami dari Tebu Pilihan.',
+    image: 'http://localhost:4028/assets/gulasemut.jpeg',
+    category: 'Makanan & Minuman',
+    price: 'Rp 5.000 - Rp 30.000',
+    rating: 4.6,
+    reviews: 64,
+    whatsapp: '6281323993796',
+  },
+];
 
+export default function CommunityUMKM() {
+  const [index, setIndex] = useState(0);
+  const visible = 3;
+  const maxIndex = Math.max(0, umkmList.length - visible);
 
-export default function CommunityAchievements() {
+  const next = () => setIndex((i) => (i >= maxIndex ? 0 : i + 1));
+  const prev = () => setIndex((i) => (i <= 0 ? maxIndex : i - 1));
+
+  const handleOrder = (item: UMKM) => {
+    const msg = `Halo, saya tertarik dengan produk *${item.name}* dari ${item.owner}. Mohon info lebih lanjut.`;
+    window.open(
+      `https://wa.me/${item.whatsapp}?text=${encodeURIComponent(msg)}`,
+      '_blank'
+    );
+  };
+
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-10 md:mb-12">
-          <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-            Community Achievements
-          </h2>
-          <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Celebrating our collective success and milestones that make our village proud
-          </p>
-        </div>
+    <section className="py-16 bg-[#faf8f3]">
+      <div className="max-w-7xl mx-auto px-4 relative">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {achievements.map((achievement) =>
-          <div
-            key={achievement.id}
-            className="bg-card rounded-xl overflow-hidden shadow-subtle hover:shadow-lg transition-all duration-300 border border-border group">
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground">
+              UMKM Unggulan
+            </h2>
+            <p className="text-muted-foreground mt-1">
+              Produk berkualitas dari warga Desa Bangunjaya
+            </p>
+          </div>
 
-              <div className="relative h-48 md:h-56 overflow-hidden">
-                <AppImage
-                src={achievement.image}
-                alt={achievement.alt}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-
-                <div className="absolute top-4 right-4 bg-success text-success-foreground px-3 py-1 rounded-full text-xs font-cta font-semibold">
-                  {achievement.category}
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center space-x-2 text-muted-foreground mb-3">
-                  <Icon name="CalendarIcon" size={16} />
-                  <span className="font-body text-sm">{achievement.date}</span>
-                </div>
-                <h3 className="font-headline text-xl md:text-2xl font-semibold text-foreground mb-3">
-                  {achievement.title}
-                </h3>
-                <p className="font-body text-sm md:text-base text-muted-foreground">
-                  {achievement.description}
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="mt-10 md:mt-12 bg-success/10 border border-success/20 rounded-xl p-6 md:p-8">
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4">
-              <div className="bg-success w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center">
-                <Icon name="TrophyIcon" size={28} className="text-success-foreground" />
-              </div>
-              <div>
-                <h3 className="font-headline text-xl md:text-2xl font-semibold text-foreground mb-1">
-                  Share Your Success Story
-                </h3>
-                <p className="font-body text-sm md:text-base text-muted-foreground">
-                  Have an achievement to celebrate? Let us know!
-                </p>
-              </div>
-            </div>
-            <button className="bg-success hover:bg-success/90 text-success-foreground px-6 py-3 rounded-lg font-cta font-semibold transition-all duration-300 shadow-subtle">
-              Submit Story
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prev}
+              className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-muted"
+            >
+              <Icon name="ChevronLeftIcon" size={18} />
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-muted"
+            >
+              <Icon name="ChevronRightIcon" size={18} />
             </button>
           </div>
         </div>
+
+        {/* CAROUSEL */}
+        <div className="overflow-hidden">
+          <div
+            className="flex gap-6 transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${index * 33.333}%)` }}
+          >
+            {umkmList.map((umkm) => (
+              <div
+                key={umkm.id}
+                className="w-full md:w-[calc(33.333%-16px)] flex-shrink-0 bg-white rounded-2xl shadow-soft overflow-hidden border border-border flex flex-col"
+              >
+                {/* IMAGE */}
+                <div className="relative h-56 overflow-hidden bg-muted">
+                  <AppImage
+                    src={umkm.image}
+                    alt={umkm.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3 z-10 bg-[#4f6f52] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    {umkm.category}
+                  </div>
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-5 flex flex-col flex-1">
+                  <div className="mb-2">
+                    <h3 className="font-semibold text-lg leading-tight">
+                      {umkm.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {umkm.owner}
+                    </p>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                    {umkm.description}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-sm mb-4">
+                    <span className="font-semibold">⭐ {umkm.rating}</span>
+                    <span className="text-muted-foreground">
+                      ({umkm.reviews} ulasan)
+                    </span>
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between pt-3 border-t">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Harga</p>
+                      <p className="text-lg font-semibold text-[#4f6f52]">
+                        {umkm.price}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => handleOrder(umkm)}
+                      className="bg-[#5aa469] hover:bg-[#4f6f52] text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2"
+                    >
+                      <Icon name="ChatBubbleLeftRightIcon" size={16} />
+                      Pesan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

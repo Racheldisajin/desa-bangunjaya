@@ -1,3 +1,4 @@
+"use client";
 
 import Icon from '@/components/ui/AppIcon';
 
@@ -15,7 +16,7 @@ const GeographySection = ({ className = '' }: GeographySectionProps) => {
     {
       icon: 'GlobeAltIcon',
       title: 'Coordinates',
-      description: 'Latitude: -7.504805669842216, Longitude: 108.4029034790073'
+      description: 'Latitude: -7.50475, Longitude: 108.40303'
     },
     {
       icon: 'CloudIcon',
@@ -60,7 +61,7 @@ const GeographySection = ({ className = '' }: GeographySectionProps) => {
             loading="lazy"
             title="Village Location Map"
             referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=-7.504805669842216,108.4029034790073&z=14&output=embed"
+            src="https://www.google.com/maps?q=kantor+desa+bangunjaya+kabupaten+pangandaran&z=15&output=embed"
             className="border-0"
           />
         </div>

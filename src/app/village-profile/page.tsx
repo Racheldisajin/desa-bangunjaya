@@ -4,130 +4,142 @@ import VillageStats from './components/VillageStats';
 import DemographicsChart from './components/DemographicsChart';
 import GeographySection from './components/GeographySection';
 import InfrastructureOverview from './components/InfrastructureOverview';
-import HistoricalTimeline from './components/HistoricalTimeline';
-import UniqueCharacteristics from './components/UniqueCharacteristics';
-import DownloadSection from './components/DownloadSection';
-import ContactInquiry from './components/ContactInquiry';
+import VisionMissionHistory from './components/VisionMissionHistory';
+import EducationStats from './components/EducationStats';
+import OccupationStats from './components/OccupationStats';
 
 export const metadata: Metadata = {
-  title: 'Village Profile - Village Connect',
-  description: 'Comprehensive overview of our village including demographics, geography, infrastructure, and unique characteristics that make our community special.',
+  title: 'Desa Bangunjaya',
+  description:
+    'Profil lengkap Desa Bangunjaya meliputi demografi, geografi, dan infrastruktur desa.',
 };
 
 export default function VillageProfilePage() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="pt-20 lg:pt-24">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary to-primary/80 text-white py-16 lg:py-24">
+        <section className="bg-gradient-to-br from-primary to-primary/80 text-white py-20 lg:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl lg:text-5xl font-headline font-bold mb-6">
-                Discover Our Village
+                Desa Bangunjaya
               </h1>
               <p className="text-lg lg:text-xl font-body opacity-90 leading-relaxed">
-                A thriving community where tradition meets progress. Explore our rich heritage, modern infrastructure, and the unique characteristics that make our village a wonderful place to call home.
+                Desa yang terus berkembang dengan memadukan tradisi,
+                kebersamaan, dan kemajuan pembangunan.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Vision, Mission & History */}
+        <section className="py-16 lg:py-20 bg-muted/20">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="bg-white rounded-2xl shadow-sm p-8 lg:p-12">
+              <VisionMissionHistory />
             </div>
           </div>
         </section>
 
         {/* Village Statistics */}
-        <section className="py-12 lg:py-16 bg-background">
+        <section className="py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-4">
             <VillageStats />
           </div>
         </section>
 
-        {/* Demographics Section */}
-        <section className="py-12 lg:py-16 bg-muted/30">
+        {/* Demographics (Usia) */}
+        <section className="py-16 lg:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <DemographicsChart />
           </div>
         </section>
 
-        {/* Geography Section */}
-        <section className="py-12 lg:py-16 bg-background">
+        {/* Education Statistics */}
+        <section className="py-16 lg:py-20 bg-background">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <EducationStats />
+          </div>
+        </section>
+
+        {/* Occupation Statistics (SETELAH PENDIDIKAN) */}
+        <section className="py-16 lg:py-20 bg-muted/20">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <OccupationStats />
+          </div>
+        </section>
+
+        {/* Geography */}
+        <section className="py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-4">
             <GeographySection />
           </div>
         </section>
 
-        {/* Infrastructure Overview */}
-        <section className="py-12 lg:py-16 bg-muted/30">
+        {/* Infrastructure */}
+        <section className="py-16 lg:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <InfrastructureOverview />
           </div>
         </section>
+      </main>
 
-        {/* Historical Timeline */}
-        <section className="py-12 lg:py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <HistoricalTimeline />
-          </div>
-        </section>
-
-        {/* Unique Characteristics */}
-        <section className="py-12 lg:py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <UniqueCharacteristics />
-          </div>
-        </section>
-
-        {/* Download Resources */}
-        <section className="py-12 lg:py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <DownloadSection />
+      {/* FOOTER */}
+      <footer className="bg-primary text-white mt-16">
+        <div className="container mx-auto max-w-6xl px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left mb-10">
+            {/* LOGO */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12">
+                  <img
+                    src="http://localhost:4028/assets/pnd.png"
+                    alt="Logo Desa Bangunjaya"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="font-headline font-semibold text-xl">
+                  Desa Bangunjaya
+                </h3>
+              </div>
+              <p className="text-white/80 text-sm leading-relaxed max-w-xs">
+                Portal resmi Desa Bangunjaya untuk informasi, layanan,
+                dan pembangunan masyarakat.
+              </p>
             </div>
-          </div>
-        </section>
 
-        {/* Contact Inquiry */}
-        <section className="py-12 lg:py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <ContactInquiry />
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="bg-primary text-white py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <h3 className="text-xl font-headline font-semibold mb-4">Village Connect</h3>
-                <p className="text-sm opacity-90 font-body">
-                  Your digital gateway to community services, information, and engagement.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-lg font-headline font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2 text-sm font-body">
-                  <li><a href="/homepage" className="hover:text-accent transition-colors">Home</a></li>
-                  <li><a href="/heritage-center" className="hover:text-accent transition-colors">Destinasi Desa</a></li>
-                  <li><a href="/gallery" className="hover:text-accent transition-colors">Gallery</a></li>
-                  <li><a href="/contact-information" className="hover:text-accent transition-colors">Contact</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-lg font-headline font-semibold mb-4">Contact Us</h4>
-                <ul className="space-y-2 text-sm font-body">
-                  <li>Phone: +1 (555) 123-4567</li>
-                  <li>Email: info@villageconnect.gov</li>
-                  <li>Address: Village Administration Office</li>
-                </ul>
-              </div>
+            {/* MENU */}
+            <div>
+              <h4 className="font-semibold mb-3">Menu</h4>
+              <ul className="space-y-2 text-white/80 text-sm">
+                <li><a href="/homepage">Beranda</a></li>
+                <li><a href="/gallery">Galeri</a></li>
+                <li><a href="/contact-information">Kontak</a></li>
+              </ul>
             </div>
-            <div className="border-t border-white/20 pt-8 text-center">
-              <p className="text-sm font-body opacity-80">
-                &copy; {new Date().getFullYear()} Village Connect. All rights reserved.
+
+            {/* KONTAK */}
+            <div>
+              <h4 className="font-semibold mb-3">Kontak</h4>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Kantor Desa Bangunjaya<br />
+                Senin – Jumat<br />
+                08.00 – 16.00
               </p>
             </div>
           </div>
-        </footer>
-      </main>
+
+          <div className="border-t border-white/20 pt-6 text-center text-white/80 text-sm">
+            © {currentYear} KKN 122 Bangunjaya – Universitas Siliwangi.  
+            All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
