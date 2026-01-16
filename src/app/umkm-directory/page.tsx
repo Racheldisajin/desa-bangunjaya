@@ -3,7 +3,6 @@
 import Header from '@/components/common/Header';
 import Icon from '@/components/ui/AppIcon';
 import UMKMInteractive from './components/UMKMInteractive';
-import Footer from '@/components/common/Footer';
 
 export default function UMKMDirectoryClient() {
   const currentYear = new Date().getFullYear();
