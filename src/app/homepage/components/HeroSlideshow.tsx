@@ -18,7 +18,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "http://localhost:4028/assets/images/kebun.png",
+    image: "/assets/images/kebun.png",
     alt: "Tampilan udara lanskap Desa Bangunjaya",
     title: "SELAMAT DATANG DI DESA BANGUNJAYA",
     description: "JAYA KARSA MAKARYA PRAJA",
@@ -27,7 +27,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image: "http://localhost:4028/assets/images/sunrise.jpeg",
+    image: "/assets/images/sunrise.jpeg",
     alt: "Kegiatan kebersamaan masyarakat desa",
     title: "Kehidupan Masyarakat yang Harmonis",
     description: "Bersama melestarikan warisan budaya dan tradisi desa",
@@ -36,7 +36,7 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    image: "http://localhost:4028/assets/images/curug.jpeg",
+    image: "/assets/images/curug.jpeg",
     alt: "Keindahan alam Desa Bangunjaya",
     title: "Keindahan Alam dan Ketenteraman",
     description: "Nikmati pesona alam yang mengelilingi Desa Bangunjaya",
@@ -106,22 +106,24 @@ export default function HeroSlideshow() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
 
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="container mx-auto px-4">
-              <div className="max-w-3xl mx-auto text-center text-white">
-                <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-semibold mb-4">
+            <div className="container mx-auto px-4 mt-10">
+              <div className="max-w-5xl mx-auto text-center text-white">
+                <h1 className="font-body text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tighter leading-tight drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
                   {slide.title}
                 </h1>
 
-                <p className="font-body text-lg md:text-xl mb-6 opacity-90">
+                <p className="font-body text-xl md:text-3xl mb-12 text-slate-100 font-light drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-3xl mx-auto">
                   {slide.description}
                 </p>
 
                 <button
                   onClick={() => router.push(slide.ctaLink)}
-                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-semibold transition shadow-lg"
+                  className="inline-flex items-center gap-3 bg-emerald-500/90 hover:bg-emerald-400 backdrop-blur-md text-white px-12 py-4 rounded-full font-bold text-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(52,211,153,0.6)] hover:-translate-y-1 border border-emerald-300/50 group"
                 >
-                  <span>{slide.ctaText}</span>
-                  <Icon name="ArrowRightIcon" size={20} />
+                  <span className="tracking-wide">{slide.ctaText}</span>
+                  <div className="bg-white/20 rounded-full p-1 group-hover:bg-white/30 transition-colors">
+                    <Icon name="ArrowRightIcon" size={20} className="transform group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </button>
               </div>
             </div>

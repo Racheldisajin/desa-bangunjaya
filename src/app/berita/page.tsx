@@ -1,110 +1,103 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/common/Header';
-
-type News = {
-  id: number;
-  title: string;
-  date: string;
-  excerpt: string;
-  content: string;
-  image: string;
-};
+import Footer from '@/app/homepage/components/Footer';
+import { getArticles, fetchArticles, Article } from '@/utils/storage';
 
 export default function BeritaPage() {
   const [openId, setOpenId] = useState<number | null>(null);
-  const currentYear = new Date().getFullYear();
+  const [news, setNews] = useState<Article[]>([]);
 
-  const news: News[] = [
-    {
-      id: 1,
-      title: 'Kerja Bakti Warga Desa Bangunjaya',
-      date: '10 Januari 2026',
-      excerpt:
-        'Warga Desa Bangunjaya melaksanakan kerja bakti membersihkan lingkungan sebagai wujud kepedulian terhadap kebersihan dan kesehatan bersama.',
-      content:
-        'Warga Desa Bangunjaya melaksanakan kerja bakti membersihkan lingkungan sebagai bentuk kepedulian terhadap kebersihan dan kesehatan bersama.\n\nKegiatan ini melibatkan berbagai elemen masyarakat mulai dari pemuda, ibu-ibu PKK, hingga perangkat desa.\n\nKerja bakti difokuskan pada pembersihan jalan desa, saluran air, dan fasilitas umum. Selain menciptakan lingkungan yang bersih dan sehat, kegiatan ini juga mempererat rasa kebersamaan antarwarga.',
-      image:
-        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200',
-    },
-    {
-      id: 2,
-      title: 'Turnamen Voli Karang Taruna',
-      date: '5 Januari 2026',
-      excerpt:
-        'Dalam rangka mempererat silaturahmi antarwarga, Karang Taruna Desa Bangunjaya mengadakan turnamen bola voli.',
-      content:
-        'Karang Taruna Desa Bangunjaya mengadakan turnamen bola voli yang diikuti oleh perwakilan tiap dusun.\n\nKegiatan ini bertujuan mempererat silaturahmi sekaligus menumbuhkan semangat sportivitas.\n\nTurnamen berlangsung meriah dan mendapat sambutan hangat dari masyarakat.',
-      image:
-        'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200',
-    },
-  ];
+  useEffect(() => {
+    // Load local cache instantly
+    setNews(getArticles());
+    // Fetch fresh from Supabase
+    fetchArticles().then(data => setNews(data));
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col text-white">
       <Header />
 
-      <main className="pt-20 lg:pt-24">
+      <main className="flex-grow pt-20 lg:pt-24">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary to-primary/80 text-white py-16 lg:py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">Berita Desa</h1>
-            <p className="max-w-2xl mx-auto text-white/90">
-              Informasi terbaru seputar kegiatan dan peristiwa di Desa Bangunjaya.
+        <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold mb-6 tracking-tight drop-shadow-md">
+              Kabar Desa
+            </h1>
+            <p className="max-w-2xl mx-auto text-slate-300 text-lg md:text-xl font-body font-light">
+              Pusat informasi terbaru seputar kegiatan, peristiwa, dan pembangunan di Desa Bangunjaya.
             </p>
           </div>
         </section>
 
         {/* News List */}
-        <section className="py-16 bg-muted/20">
-          <div className="container mx-auto px-4 max-w-5xl space-y-6">
+        <section className="py-16 md:py-24 bg-transparent relative -mt-8 z-20">
+          <div className="container mx-auto px-4 max-w-5xl space-y-8">
             {news.map((item) => {
               const open = openId === item.id;
 
               return (
                 <article
                   key={item.id}
-                  className="bg-white rounded-2xl shadow-sm overflow-hidden"
+                  className="bg-white/5 backdrop-blur-md rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 overflow-hidden border border-white/10"
                 >
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div className="h-44 md:h-full w-full overflow-hidden">
+                  <div className="grid md:grid-cols-3 gap-0 md:gap-6">
+                    <div className="h-56 md:h-full w-full overflow-hidden relative">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
                       />
+                      <div className="absolute top-4 left-4 bg-slate-900/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-emerald-400 shadow-lg border border-white/10 md:hidden">
+                        {item.category}
+                      </div>
                     </div>
 
-                    <div className="md:col-span-2 p-6">
-                      <p className="text-sm text-gray-500 mb-1">{item.date}</p>
-                      <h2 className="text-xl font-semibold mb-2">
+                    <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="hidden md:inline-block bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold font-body">
+                          {item.category}
+                        </span>
+                        <p className="text-sm text-slate-400 font-body font-medium">{item.date}</p>
+                      </div>
+                      
+                      <h2 className="text-2xl font-headline font-bold mb-4 text-white leading-tight">
                         {item.title}
                       </h2>
-                      <p className="text-gray-700 mb-4">
-                        {item.excerpt}
+                      
+                      <p className="text-slate-300 mb-6 font-body leading-relaxed">
+                        {!open && item.content.length > 150
+                          ? item.content.substring(0, 150) + '...'
+                          : item.content}
                       </p>
 
                       {!open && (
-                        <button
-                          onClick={() => setOpenId(item.id)}
-                          className="text-primary font-medium text-sm hover:underline"
-                        >
-                          Baca Selengkapnya
-                        </button>
+                        <div>
+                          <button
+                            onClick={() => setOpenId(item.id)}
+                            className="text-emerald-400 font-bold text-sm hover:text-emerald-300 transition-colors inline-flex items-center gap-1 group font-cta"
+                          >
+                            Baca Selengkapnya
+                            <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                          </button>
+                        </div>
                       )}
 
                       {open && (
-                        <div className="mt-4 space-y-4 text-gray-700 leading-relaxed whitespace-pre-line">
-                          <div>{item.content}</div>
-
+                        <div className="mt-2 space-y-4 text-slate-300 font-body leading-relaxed whitespace-pre-line border-t border-white/10 pt-6">
                           {/* Tombol Tutup di Bawah */}
-                          <div className="pt-4 border-t">
+                          <div className="pt-2">
                             <button
                               onClick={() => setOpenId(null)}
-                              className="text-sm text-gray-500 hover:text-primary transition"
+                              className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-xl text-sm transition-colors"
                             >
-                              Tutup berita
+                              Sembunyikan
                             </button>
                           </div>
                         </div>
@@ -118,57 +111,7 @@ export default function BeritaPage() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-primary text-white mt-16">
-        <div className="container mx-auto max-w-6xl px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left mb-10">
-            {/* LOGO */}
-            <div className="flex flex-col items-center md:items-start">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12">
-                  <img
-                    src="http://localhost:4028/assets/pnd.png"
-                    alt="Logo Desa Bangunjaya"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="font-headline font-semibold text-xl">
-                  Desa Bangunjaya
-                </h3>
-              </div>
-              <p className="text-white/80 text-sm leading-relaxed max-w-xs">
-                Portal resmi Desa Bangunjaya untuk informasi, layanan,
-                dan pembangunan masyarakat.
-              </p>
-            </div>
-
-            {/* MENU */}
-            <div>
-              <h4 className="font-semibold mb-3">Menu</h4>
-              <ul className="space-y-2 text-white/80 text-sm">
-                <li><a href="/homepage">Beranda</a></li>
-                <li><a href="/gallery">Galeri</a></li>
-                <li><a href="/contact-information">Kontak</a></li>
-              </ul>
-            </div>
-
-            {/* KONTAK */}
-            <div>
-              <h4 className="font-semibold mb-3">Kontak</h4>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Kantor Desa Bangunjaya<br />
-                Senin – Jumat<br />
-                08.00 – 16.00
-              </p>
-            </div>
-          </div>
-
-          <div className="border-t border-white/20 pt-6 text-center text-white/80 text-sm">
-            © {currentYear} KKN 122 Bangunjaya – Universitas Siliwangi.  
-            All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

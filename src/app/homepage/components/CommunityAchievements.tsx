@@ -23,7 +23,7 @@ const umkmList: UMKM[] = [
     name: 'Salegor',
     owner: 'Siti Rukoyah',
     description: 'Sale pisang manis legit khas desa.',
-    image: 'http://localhost:4028/assets/images/sale.jpeg',
+    image: '/assets/images/sale.jpeg',
     category: 'Makanan & Minuman',
     price: 'Rp 4.000',
     rating: 4.6,
@@ -35,7 +35,7 @@ const umkmList: UMKM[] = [
     name: 'Telur Asin',
     owner: 'Indrayani Tirtasari',
     description: 'Produk telur asin dan bebek segar dari peternakan lokal.',
-    image: 'http://localhost:4028/assets/images/telurasin.jpeg',
+    image: '/assets/images/telurasin.jpeg',
     category: 'Makanan & Minuman',
     price: 'Rp 3.500 - Rp 4.000 per butir',
     rating: 4.6,
@@ -47,7 +47,7 @@ const umkmList: UMKM[] = [
     name: 'Donat',
     owner: 'Neng kusmayati',
     description: 'Donat lembut dan enak.',
-    image: 'http://localhost:4028/assets/donat.jpeg',
+    image: '/assets/donat.jpeg',
     category: 'Makanan & Minuman',
     price: 'Rp 5.000 - Rp 40.000',
     rating: 4.6,
@@ -59,7 +59,7 @@ const umkmList: UMKM[] = [
     name: 'Keripik Kebaya',
     owner: 'Yayat Kusyati',
     description: 'Keripik singkong renyah khas desa.',
-    image: 'http://localhost:4028/assets/keripik.jpeg',
+    image: '/assets/keripik.jpeg',
     category: 'Makanan & Minuman',
     price: 'Rp 5.000 - Rp 40.000',
     rating: 4.6,
@@ -71,7 +71,7 @@ const umkmList: UMKM[] = [
     name: 'GUSELA',
     owner: 'Abdul Rojak',
     description: 'Gula Semut Alami dari Tebu Pilihan.',
-    image: 'http://localhost:4028/assets/gulasemut.jpeg',
+    image: '/assets/gulasemut.jpeg',
     category: 'Makanan & Minuman',
     price: 'Rp 5.000 - Rp 30.000',
     rating: 4.6,
@@ -97,8 +97,8 @@ export default function CommunityUMKM() {
   };
 
   return (
-    <section className="py-16 bg-[#faf8f3]">
-      <div className="max-w-7xl mx-auto px-4 relative">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl px-4 relative z-10">
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-10">
@@ -114,13 +114,13 @@ export default function CommunityUMKM() {
           <div className="flex items-center gap-3">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-muted"
+              className="w-10 h-10 rounded-full bg-white/10 text-white shadow-lg flex items-center justify-center hover:bg-white/20 border border-white/5"
             >
               <Icon name="ChevronLeftIcon" size={18} />
             </button>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-muted"
+              className="w-10 h-10 rounded-full bg-white/10 text-white shadow-lg flex items-center justify-center hover:bg-white/20 border border-white/5"
             >
               <Icon name="ChevronRightIcon" size={18} />
             </button>
@@ -136,16 +136,16 @@ export default function CommunityUMKM() {
             {umkmList.map((umkm) => (
               <div
                 key={umkm.id}
-                className="w-full md:w-[calc(33.333%-16px)] flex-shrink-0 bg-white rounded-2xl shadow-soft overflow-hidden border border-border flex flex-col"
+                className="w-full md:w-[calc(33.333%-16px)] flex-shrink-0 bg-white/5 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden border border-white/10 flex flex-col"
               >
                 {/* IMAGE */}
-                <div className="relative h-56 overflow-hidden bg-muted">
+                <div className="relative h-56 overflow-hidden bg-white/5">
                   <AppImage
                     src={umkm.image}
                     alt={umkm.name}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-3 left-3 z-10 bg-[#4f6f52] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute top-3 left-3 z-10 bg-slate-900/90 backdrop-blur-md border border-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold">
                     {umkm.category}
                   </div>
                 </div>
@@ -172,17 +172,17 @@ export default function CommunityUMKM() {
                     </span>
                   </div>
 
-                  <div className="mt-auto flex items-center justify-between pt-3 border-t">
+                  <div className="mt-auto flex items-center justify-between pt-3 border-t border-white/10">
                     <div>
                       <p className="text-xs text-muted-foreground">Harga</p>
-                      <p className="text-lg font-semibold text-[#4f6f52]">
+                      <p className="text-lg font-semibold text-emerald-400">
                         {umkm.price}
                       </p>
                     </div>
 
                     <button
                       onClick={() => handleOrder(umkm)}
-                      className="bg-[#5aa469] hover:bg-[#4f6f52] text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2"
+                      className="bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2"
                     >
                       <Icon name="ChatBubbleLeftRightIcon" size={16} />
                       Pesan

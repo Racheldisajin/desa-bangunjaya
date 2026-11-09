@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,61 +8,61 @@
 
 @layer base {
   :root {
-    /* Primary Colors */
-    --color-primary: #2D5A27; /* green-800 */
+    /* Primary Colors - Modern Emerald/Teal */
+    --color-primary: #059669; /* emerald-600 */
     --color-primary-foreground: #FFFFFF; /* white */
     
     /* Secondary Colors */
-    --color-secondary: #8B4513; /* saddle-brown */
+    --color-secondary: #0f766e; /* teal-700 */
     --color-secondary-foreground: #FFFFFF; /* white */
     
     /* Accent Colors */
-    --color-accent: #D2691E; /* chocolate */
+    --color-accent: #10b981; /* emerald-500 */
     --color-accent-foreground: #FFFFFF; /* white */
     
     /* Background Colors */
-    --color-background: #FEFEFE; /* off-white */
-    --color-foreground: #1A1A1A; /* gray-900 */
+    --color-background: #0f172a; /* slate-900 */
+    --color-foreground: #f8fafc; /* slate-50 */
     
     /* Surface Colors */
-    --color-card: #F8F6F3; /* warm-gray-50 */
-    --color-card-foreground: #1A1A1A; /* gray-900 */
+    --color-card: #1e293b; /* slate-800 */
+    --color-card-foreground: #f8fafc; /* slate-50 */
     
     /* Popover Colors */
-    --color-popover: #FFFFFF; /* white */
-    --color-popover-foreground: #1A1A1A; /* gray-900 */
+    --color-popover: #1e293b; /* slate-800 */
+    --color-popover-foreground: #f8fafc; /* slate-50 */
     
     /* Muted Colors */
-    --color-muted: #F8F6F3; /* warm-gray-50 */
-    --color-muted-foreground: #4A4A4A; /* gray-600 */
+    --color-muted: #334155; /* slate-700 */
+    --color-muted-foreground: #94a3b8; /* slate-400 */
     
     /* Border & Input */
-    --color-border: rgba(139, 69, 19, 0.2); /* saddle-brown-20 */
-    --color-input: rgba(139, 69, 19, 0.2); /* saddle-brown-20 */
-    --color-ring: #2D5A27; /* green-800 */
+    --color-border: #334155; /* slate-700 */
+    --color-input: #334155; /* slate-700 */
+    --color-ring: #10b981; /* emerald-500 */
     
     /* Semantic Colors */
-    --color-success: #228B22; /* forest-green */
-    --color-success-foreground: #FFFFFF; /* white */
+    --color-success: #10b981; /* emerald-500 */
+    --color-success-foreground: #ffffff; /* white */
     
-    --color-warning: #FF8C00; /* dark-orange */
-    --color-warning-foreground: #1A1A1A; /* gray-900 */
+    --color-warning: #f59e0b; /* amber-500 */
+    --color-warning-foreground: #ffffff; /* white */
     
-    --color-error: #B22222; /* firebrick */
-    --color-error-foreground: #FFFFFF; /* white */
+    --color-error: #ef4444; /* red-500 */
+    --color-error-foreground: #ffffff; /* white */
     
-    --color-destructive: #B22222; /* firebrick */
-    --color-destructive-foreground: #FFFFFF; /* white */
+    --color-destructive: #ef4444; /* red-500 */
+    --color-destructive-foreground: #ffffff; /* white */
     
     /* Additional Brand Colors */
-    --color-heritage: #8B4513; /* saddle-brown */
-    --color-civic: #2C5282; /* blue-700 */
-    --color-conversion: #10B981; /* emerald-500 */
-    --color-trust: #F7FAFC; /* gray-50 */
-    --color-cta: #E53E3E; /* red-500 */
+    --color-heritage: #0f766e; /* teal-700 */
+    --color-civic: #0369a1; /* sky-700 */
+    --color-conversion: #10b981; /* emerald-500 */
+    --color-trust: #f8fafc; /* slate-50 */
+    --color-cta: #ef4444; /* red-500 */
     
     /* Spacing & Layout */
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* modern rounded corners */
   }
 }
 
@@ -74,14 +73,14 @@
   
   body {
     @apply bg-background text-foreground;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Crimson Text', serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
   button {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 }

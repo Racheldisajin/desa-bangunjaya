@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Header from '@/components/common/Header';
+import Footer from '@/app/homepage/components/Footer';
 
 type Dimension = {
   name: string;
@@ -11,7 +12,6 @@ type Dimension = {
 
 export default function IDMPage() {
   const [mounted, setMounted] = useState(false);
-  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     setMounted(true);
@@ -51,17 +51,20 @@ export default function IDMPage() {
       : 'Desa Tertinggal';
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col text-white">
       <Header />
 
-      <main className="pt-20 lg:pt-24">
+      <main className="flex-grow pt-20 lg:pt-24">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary to-primary/80 text-white py-16 lg:py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+        <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold mb-6 tracking-tight drop-shadow-md">
               Indeks Desa Membangun (IDM)
             </h1>
-            <p className="max-w-2xl mx-auto text-white/90">
+            <p className="max-w-2xl mx-auto text-slate-300 text-lg md:text-xl font-body font-light">
               IDM digunakan untuk mengukur tingkat kemandirian desa berdasarkan
               dimensi sosial, ekonomi, dan lingkungan.
             </p>
@@ -69,41 +72,45 @@ export default function IDMPage() {
         </section>
 
         {/* Summary */}
-        <section className="py-16 bg-muted/20">
+        <section className="py-16 bg-transparent relative -mt-8 z-20">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="bg-white rounded-2xl shadow-sm p-8 lg:p-12 text-center">
-              <p className="text-gray-600 mb-2">Status Desa Saat Ini</p>
-              <h2 className="text-3xl font-bold mb-4">{status}</h2>
-              <p className="text-gray-700">
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl shadow-lg border border-white/10 p-8 lg:p-12 text-center hover:shadow-2xl transition-shadow duration-300 hover:bg-white/10">
+              <p className="text-slate-400 mb-3 font-body font-medium uppercase tracking-wider text-sm">Status Desa Saat Ini</p>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-headline text-emerald-400 drop-shadow-sm">{status}</h2>
+              <p className="text-slate-300 font-body text-lg">
                 Nilai rata-rata IDM Desa Bangunjaya:
-                <span className="font-semibold"> {average.toFixed(1)}</span>
+                <span className="font-bold text-white ml-2 bg-emerald-500/20 px-3 py-1 rounded-lg border border-emerald-500/30"> {average.toFixed(1)}</span>
               </p>
             </div>
           </div>
         </section>
 
         {/* Dimensions */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-3 gap-6">
+        <section className="py-12 bg-transparent pb-24">
+          <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-3 gap-8">
             {dimensions.map((d) => (
               <div
                 key={d.name}
-                className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition"
+                className="bg-white/5 backdrop-blur-md rounded-3xl shadow-lg border border-white/10 p-8 hover:shadow-2xl hover:-translate-y-2 hover:bg-white/10 transition-all duration-300 group"
               >
-                <h3 className="text-xl font-semibold mb-2">{d.name}</h3>
-                <p className="text-sm text-gray-600 mb-4">{d.description}</p>
+                <h3 className="text-2xl font-bold mb-3 font-headline text-white group-hover:text-emerald-400 transition-colors">{d.name}</h3>
+                <p className="text-sm text-slate-300 mb-6 font-body leading-relaxed">{d.description}</p>
 
-                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-4 bg-white/10 rounded-full overflow-hidden shadow-inner mb-4">
                   <div
-                    className="h-full bg-primary transition-all duration-1000"
+                    className="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full relative"
                     style={{
                       width: mounted ? `${d.value}%` : '0%',
+                      transition: 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
-                  />
+                  >
+                    <div className="absolute top-0 right-0 bottom-0 left-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=')] opacity-50"></div>
+                  </div>
                 </div>
 
-                <div className="mt-2 text-sm text-gray-700">
-                  Nilai: <span className="font-semibold">{d.value}</span>
+                <div className="flex justify-between items-center text-sm font-body">
+                  <span className="text-slate-400 font-medium">Nilai</span>
+                  <span className="font-bold text-white text-lg">{d.value}</span>
                 </div>
               </div>
             ))}
@@ -111,57 +118,7 @@ export default function IDMPage() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-primary text-white mt-16">
-        <div className="container mx-auto max-w-6xl px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left mb-10">
-            {/* LOGO */}
-            <div className="flex flex-col items-center md:items-start">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12">
-                  <img
-                    src="http://localhost:4028/assets/pnd.png"
-                    alt="Logo Desa Bangunjaya"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="font-headline font-semibold text-xl">
-                  Desa Bangunjaya
-                </h3>
-              </div>
-              <p className="text-white/80 text-sm leading-relaxed max-w-xs">
-                Portal resmi Desa Bangunjaya untuk informasi, layanan,
-                dan pembangunan masyarakat.
-              </p>
-            </div>
-
-            {/* MENU */}
-            <div>
-              <h4 className="font-semibold mb-3">Menu</h4>
-              <ul className="space-y-2 text-white/80 text-sm">
-                <li><a href="/homepage">Beranda</a></li>
-                <li><a href="/gallery">Galeri</a></li>
-                <li><a href="/contact-information">Kontak</a></li>
-              </ul>
-            </div>
-
-            {/* KONTAK */}
-            <div>
-              <h4 className="font-semibold mb-3">Kontak</h4>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Kantor Desa Bangunjaya<br />
-                Senin – Jumat<br />
-                08.00 – 16.00
-              </p>
-            </div>
-          </div>
-
-          <div className="border-t border-white/20 pt-6 text-center text-white/80 text-sm">
-            © {currentYear} KKN 122 Bangunjaya – Universitas Siliwangi.  
-            All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function EducationStats() {
   const [mode, setMode] = useState<'table' | 'chart'>('table');
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-6 lg:p-10">
+    <div className="bg-white/5 backdrop-blur-md rounded-2xl shadow-lg border border-white/10 p-6 lg:p-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">
           Jumlah Penduduk Berdasarkan Pendidikan

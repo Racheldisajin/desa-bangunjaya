@@ -6,35 +6,37 @@ const services = [
     title: 'Profil Desa',
     desc: 'Informasi lengkap tentang Desa Bangunjaya',
     icon: 'MapPinIcon',
-    iconBg: 'bg-[#4E6F55]',
+    iconBg: 'bg-emerald-500/20',
+    iconColor: 'text-emerald-400',
     href: '/village-profile',
   },
   {
     title: 'UMKM Lokal',
     desc: 'Produk unggulan warga desa',
     icon: 'BuildingStorefrontIcon',
-    iconBg: 'bg-[#F07C4A]',
+    iconBg: 'bg-amber-500/20',
+    iconColor: 'text-amber-400',
     href: '/umkm-directory',
   },
   {
     title: 'Kontak & Layanan',
     desc: 'Hubungi pemerintah desa',
     icon: 'PhoneIcon',
-    iconBg: 'bg-[#E9A13A]',
+    iconBg: 'bg-blue-500/20',
+    iconColor: 'text-blue-400',
     href: '/contact-information',
   },
 ];
 
-
 export default function CommunityCalendar() {
   return (
-    <section className="py-24 bg-[#FBF8F4]">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-transparent border-t border-white/5 relative z-20">
+      <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-slate-800 mb-4">
+          <h2 className="text-5xl font-bold text-white mb-4">
             Layanan Cepat
           </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
             Akses mudah ke berbagai layanan dan informasi Desa Bangunjaya
           </p>
         </div>
@@ -44,27 +46,25 @@ export default function CommunityCalendar() {
             <Link
               key={i}
               href={item.href}
-              className="bg-[#F7F3EE] rounded-3xl p-10 shadow-[0_20px_40px_rgba(0,0,0,0.05)]
-                         hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)]
-                         transition-all duration-300"
+              className="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group backdrop-blur-sm"
             >
               <div
-                className={`w-16 h-16 rounded-2xl ${item.iconBg} flex items-center justify-center mb-8`}
+                className={`w-16 h-16 rounded-2xl ${item.iconBg} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}
               >
-                <Icon name={item.icon as any} size={28} className="text-white" />
+                <Icon name={item.icon as any} size={28} className={item.iconColor} />
               </div>
 
-              <h3 className="text-2xl font-semibold text-slate-800 mb-3">
+              <h3 className="text-2xl font-semibold text-white mb-3">
                 {item.title}
               </h3>
 
-              <p className="text-slate-500 mb-8 leading-relaxed">
+              <p className="text-slate-400 mb-8 leading-relaxed">
                 {item.desc}
               </p>
 
-              <span className="inline-flex items-center text-[#4E6F55] font-medium text-lg">
+              <span className="inline-flex items-center text-emerald-400 font-medium text-lg group-hover:text-emerald-300 transition-colors">
                 Akses Sekarang
-                <Icon name="ArrowRightIcon" size={20} className="ml-2" />
+                <Icon name="ArrowRightIcon" size={20} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
           ))}

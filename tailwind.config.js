@@ -75,16 +75,16 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        headline: ['Crimson Text', 'serif'],
-        body: ['Source Sans 3', 'sans-serif'],
-        cta: ['Nunito Sans', 'sans-serif'],
-        accent: ['Merriweather', 'serif'],
+        headline: ['Plus Jakarta Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        cta: ['Plus Jakarta Sans', 'sans-serif'],
+        accent: ['Outfit', 'sans-serif'],
       },
       boxShadow: {
-        'subtle': '0 2px 8px rgba(45, 90, 39, 0.1)',
-        'card': '0 4px 16px rgba(139, 69, 19, 0.1)',
-        'elevated': '0 8px 32px rgba(139, 69, 19, 0.15)',
-        'hover': '0 16px 48px rgba(139, 69, 19, 0.25)',
+        'subtle': '0 4px 20px rgba(15, 23, 42, 0.03)',
+        'card': '0 10px 40px rgba(15, 23, 42, 0.06)',
+        'elevated': '0 20px 60px rgba(15, 23, 42, 0.08)',
+        'hover': '0 30px 60px rgba(15, 23, 42, 0.12)',
       },
       keyframes: {
         "accordion-down": {

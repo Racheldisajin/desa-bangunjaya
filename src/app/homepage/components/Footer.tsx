@@ -12,7 +12,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-primary text-primary-foreground mt-16">
+    <footer className="bg-slate-950 text-white mt-16 border-t border-white/10">
       <div className="container mx-auto max-w-6xl px-4 py-12">
 
         {/* TOP */}
@@ -23,7 +23,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12">
                 <img
-                  src="http://localhost:4028/assets/pnd.png"
+                  src="/assets/pnd.png"
                   alt="Logo Desa Bangunjaya"
                   className="w-full h-full object-contain"
                 />

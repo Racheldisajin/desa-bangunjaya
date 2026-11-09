@@ -1,35 +1,34 @@
-'use client';
-
 import type { Metadata } from 'next';
 import Header from '@/components/common/Header';
-
-import HeroSlideshow from './homepage/components/HeroSlideshow';
-import NewsTicker from './homepage/components/NewsTicker';
-import QuickServices from './homepage/components/QuickServices';
-import SearchBar from './homepage/components/SearchBar';
-import EmergencyBanner from './homepage/components/EmergencyBanner';
-import CommunityCalendar from './homepage/components/CommunityCalendar';
-import CommunityAchievements from './homepage/components/CommunityAchievements';
 import Footer from './homepage/components/Footer';
 
+import HeroSlideshow from './homepage/components/HeroSlideshow';
+import LayananCepat from './homepage/components/LayananCepat';
+import StatistikDesa from './homepage/components/StatistikDesa';
+import ApbdDesa from './homepage/components/ApbdDesa';
+import BeritaTerbaru from './homepage/components/BeritaTerbaru';
+import CommunityAchievements from './homepage/components/CommunityAchievements';
+import PetaDesa from './homepage/components/PetaDesa';
+import VideoProfil from './homepage/components/VideoProfil';
+
 export const metadata: Metadata = {
-  title: 'Homepage - Village Connect',
-  description:
-    'Welcome to Village Connect - Your comprehensive community portal for accessing village services, news, heritage information, and connecting with local officials. Experience transparent governance and community engagement.',
+  title: 'Desa Bangunjaya - Beranda',
+  description: 'Portal resmi Desa Bangunjaya. Temukan informasi, layanan masyarakat, berita, dan statistik desa.',
 };
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      <main className="pt-16 lg:pt-20">
+      <main className="flex-grow pt-16 lg:pt-20">
         <HeroSlideshow />
-        <NewsTicker />
-        <SearchBar />
-        <QuickServices />
-        <EmergencyBanner />
-        <CommunityCalendar />
+        <LayananCepat />
+        <VideoProfil />
+        <ApbdDesa />
+        <PetaDesa />
+        <StatistikDesa />
+        <BeritaTerbaru />
         <CommunityAchievements />
       </main>
 

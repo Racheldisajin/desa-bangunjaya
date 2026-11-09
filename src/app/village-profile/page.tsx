@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Header from '@/components/common/Header';
+import Footer from '@/app/homepage/components/Footer';
 import VillageStats from './components/VillageStats';
 import DemographicsChart from './components/DemographicsChart';
 import GeographySection from './components/GeographySection';
@@ -18,18 +19,21 @@ export default function VillageProfilePage() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col text-white">
       <Header />
 
       <main className="pt-20 lg:pt-24">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary to-primary/80 text-white py-20 lg:py-28">
-          <div className="container mx-auto px-4">
+        <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-5xl font-headline font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-body font-extrabold mb-6 tracking-tight drop-shadow-md">
                 Desa Bangunjaya
               </h1>
-              <p className="text-lg lg:text-xl font-body opacity-90 leading-relaxed">
+              <p className="text-lg lg:text-xl font-body text-slate-300 leading-relaxed font-light">
                 Desa yang terus berkembang dengan memadukan tradisi,
                 kebersamaan, dan kemajuan pembangunan.
               </p>
@@ -38,108 +42,58 @@ export default function VillageProfilePage() {
         </section>
 
         {/* Vision, Mission & History */}
-        <section className="py-16 lg:py-20 bg-muted/20">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="bg-white rounded-2xl shadow-sm p-8 lg:p-12">
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl shadow-lg border border-white/10 p-8 lg:p-12 hover:shadow-2xl transition-shadow duration-300 hover:bg-white/10">
               <VisionMissionHistory />
             </div>
           </div>
         </section>
 
         {/* Village Statistics */}
-        <section className="py-16 lg:py-20 bg-background">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4">
             <VillageStats />
           </div>
         </section>
 
         {/* Demographics (Usia) */}
-        <section className="py-16 lg:py-20 bg-muted/30">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4">
             <DemographicsChart />
           </div>
         </section>
 
         {/* Education Statistics */}
-        <section className="py-16 lg:py-20 bg-background">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4 max-w-6xl">
             <EducationStats />
           </div>
         </section>
 
-        {/* Occupation Statistics (SETELAH PENDIDIKAN) */}
-        <section className="py-16 lg:py-20 bg-muted/20">
+        {/* Occupation Statistics */}
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4 max-w-6xl">
             <OccupationStats />
           </div>
         </section>
 
         {/* Geography */}
-        <section className="py-16 lg:py-20 bg-background">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4">
             <GeographySection />
           </div>
         </section>
 
         {/* Infrastructure */}
-        <section className="py-16 lg:py-20 bg-muted/30">
+        <section className="py-16 lg:py-20 bg-transparent">
           <div className="container mx-auto px-4">
             <InfrastructureOverview />
           </div>
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-primary text-white mt-16">
-        <div className="container mx-auto max-w-6xl px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left mb-10">
-            {/* LOGO */}
-            <div className="flex flex-col items-center md:items-start">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12">
-                  <img
-                    src="http://localhost:4028/assets/pnd.png"
-                    alt="Logo Desa Bangunjaya"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="font-headline font-semibold text-xl">
-                  Desa Bangunjaya
-                </h3>
-              </div>
-              <p className="text-white/80 text-sm leading-relaxed max-w-xs">
-                Portal resmi Desa Bangunjaya untuk informasi, layanan,
-                dan pembangunan masyarakat.
-              </p>
-            </div>
-
-            {/* MENU */}
-            <div>
-              <h4 className="font-semibold mb-3">Menu</h4>
-              <ul className="space-y-2 text-white/80 text-sm">
-                <li><a href="/homepage">Beranda</a></li>
-                <li><a href="/gallery">Galeri</a></li>
-                <li><a href="/contact-information">Kontak</a></li>
-              </ul>
-            </div>
-
-            {/* KONTAK */}
-            <div>
-              <h4 className="font-semibold mb-3">Kontak</h4>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Kantor Desa Bangunjaya<br />
-                Senin – Jumat<br />
-                08.00 – 16.00
-              </p>
-            </div>
-          </div>
-
-          <div className="border-t border-white/20 pt-6 text-center text-white/80 text-sm">
-            © {currentYear} KKN 122 Bangunjaya – Universitas Siliwangi.  
-            All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
